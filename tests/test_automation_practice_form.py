@@ -4,10 +4,10 @@ from allure_commons.types import Severity
 from model.pages.registration_page import RegistrationPage
 
 
-@allure.tag("allure test #1")
+@allure.tag("web")
 @allure.severity(Severity.CRITICAL)
 @allure.label("owner", "Ilya Shebanov")
-@allure.feature('Форма студента')
+@allure.feature('Заполнение формы')
 @allure.story('Заполнение формы валидными данными')
 @allure.link("https://github.com", name='Testing')
 def test_complete_and_submit_form():

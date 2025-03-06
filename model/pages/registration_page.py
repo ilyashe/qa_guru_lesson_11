@@ -71,7 +71,8 @@ class RegistrationPage:
     @staticmethod
     @allure.step("Выбор штата")
     def select_state(state):
-        browser.element('#state').click().all('[id^=react-select-3-option]').element_by(have.text(state)).perform(command.js.click)
+        browser.element('#state').perform(command.js.scroll_into_view)
+        browser.element('#state').click().all('[id^=react-select-3-option]').element_by(have.text(state)).click()
 
     @staticmethod
     @allure.step("Выбор города")
