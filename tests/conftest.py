@@ -11,9 +11,6 @@ import os
 def load_env():
     load_dotenv()
 
-selenoid_login = os.getenv("SELENOID_LOGIN")
-selenoid_pass = os.getenv("SELENOID_PASS")
-selenoid_url = os.getenv("SELENOID_URL")
 
 @pytest.fixture(autouse=True)
 def setting_browser():
@@ -30,6 +27,10 @@ def setting_browser():
             "enableVideo": True
         }
     }
+
+    selenoid_login = os.getenv("SELENOID_LOGIN")
+    selenoid_pass = os.getenv("SELENOID_PASS")
+    selenoid_url = os.getenv("SELENOID_URL")
 
     options.capabilities.update(selenoid_capabilities)
     driver = webdriver.Remote(

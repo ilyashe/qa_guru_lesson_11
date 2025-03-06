@@ -56,7 +56,7 @@ class RegistrationPage:
     @staticmethod
     @allure.step("Выбор хобби")
     def select_hobby(value):
-        browser.all('[for^=hobbies-checkbox]').element_by(have.text(value)).click()
+        browser.all('[for^=hobbies-checkbox]').element_by(have.text(value)).perform(command.js.click)
 
     @staticmethod
     @allure.step("Загрузка аватара")
@@ -71,7 +71,7 @@ class RegistrationPage:
     @staticmethod
     @allure.step("Выбор штата")
     def select_state(state):
-        browser.element('#state').click().all('[id^=react-select-3-option]').element_by(have.text(state)).click()
+        browser.element('#state').click().all('[id^=react-select-3-option]').element_by(have.text(state)).perform(command.js.click)
 
     @staticmethod
     @allure.step("Выбор города")
