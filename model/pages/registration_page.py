@@ -14,6 +14,7 @@ class RegistrationPage:
         browser.driver.execute_script("$('#fixedban').remove()")
         browser.driver.execute_script("$('footer').remove()")
         # browser.driver.execute_script("document.body.style.zoom = '0.5'")
+        browser.execute_script('document.body.style.transform = "scale(.5)"')
 
     @staticmethod
     @allure.step("Ввод имени")
@@ -56,7 +57,7 @@ class RegistrationPage:
     @staticmethod
     @allure.step("Выбор хобби")
     def select_hobby(value):
-        browser.all('[for^=hobbies-checkbox]').element_by(have.text(value)).perform(command.js.click)
+        browser.all('[for^=hobbies-checkbox]').element_by(have.text(value)).click()
 
     @staticmethod
     @allure.step("Загрузка аватара")
@@ -71,7 +72,7 @@ class RegistrationPage:
     @staticmethod
     @allure.step("Выбор штата")
     def select_state(state):
-        browser.element('#state').perform(command.js.scroll_into_view)
+        # browser.element('#state').perform(command.js.scroll_into_view)
         browser.element('#state').click().all('[id^=react-select-3-option]').element_by(have.text(state)).click()
 
     @staticmethod
