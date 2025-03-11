@@ -10,11 +10,27 @@ class RegistrationPage:
     @allure.step("Открытие страницы с формой")
     def open():
         browser.open('/automation-practice-form')
+        # Проверяем, есть ли баннер перед удалением
+        banner_exists_before = browser.driver.execute_script("return document.querySelector('#fixedban') !== null;")
+        footer_exists_before = browser.driver.execute_script("return document.querySelector('footer') !== null;")
 
+        print(
+            f"До удаления: баннер {'есть' if banner_exists_before else 'нет'}, футер {'есть' if footer_exists_before 
+            else 'нет'}")
+
+        # Выполняем удаление
         browser.driver.execute_script("$('#fixedban').remove()")
         browser.driver.execute_script("$('footer').remove()")
-        # browser.driver.execute_script("document.body.style.zoom = '0.5'")
-        browser.execute_script('document.body.style.transform = "scale(.5)"')
+
+        # Проверяем, есть ли баннер после удаления
+        banner_exists_after = browser.driver.execute_script("return document.querySelector('#fixedban') !== null;")
+        footer_exists_after = browser.driver.execute_script("return document.querySelector('footer') !== null;")
+
+        print(
+            f"После удаления: баннер {'остался' if banner_exists_after else 'удален'}, футер {'остался' if 
+            footer_exists_after else 'удален'}")
+
+        browser.driver.execute_script('document.body.style.transform = "scale(.5)"')
 
     @staticmethod
     @allure.step("Ввод имени")
